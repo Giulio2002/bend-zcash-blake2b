@@ -1,0 +1,4 @@
+[submodule "bend-collections"]
+	path = bend-collections
+	url = https://github.com/Giulio2002/bend-collections.git
+	branch = blake2b-params

@@ -1,0 +1,29 @@
+[package]
+name = "blake2b_simd"
+# The version of blake2b_simd this crate replaces: a [patch.crates-io] must satisfy
+# every dependent's requirement.
+version = "1.0.4"
+edition = "2024"
+description = "blake2b_simd 1.0.4's API over the proved Bend BLAKE2b (libbendblake2b), with a shadow check"
+license = "MIT"
+repository = "https://github.com/Giulio2002/bend-zcash-blake2b"
+build = "build.rs"
+
+[features]
+default = ["std"]
+std = ["constant_time_eq/std"]
+uninline_portable = []
+# Hash with libbendblake2b (compiled from ../c/bendblake2b.c); off = the original code.
+bend = ["dep:cc"]
+
+[dependencies]
+arrayref = "0.3.5"
+arrayvec = { version = "0.7.0", default-features = false }
+constant_time_eq = { version = "0.4.2", default-features = false }
+
+[build-dependencies]
+cc = { version = "1", optional = true }
+
+[dev-dependencies]
+blake2b_simd_upstream = { package = "blake2b_simd", version = "=1.0.4" }
+hex = "0.4"
